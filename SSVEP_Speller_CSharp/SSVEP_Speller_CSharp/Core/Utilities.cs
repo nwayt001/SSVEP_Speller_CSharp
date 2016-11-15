@@ -19,6 +19,12 @@ namespace SSVEP_Speller_CSharp
         public string waveform, stim_shape;
         public int num_column, num_row;
         public int left_right_margin, inter_stimulus_spacing;
+        public bool debug;
+
+        public string subject_id;
+        public string group_num, session_num, run_num;
+        public string speller_mode, target_text, feedback;
+        public string classifier, twitter_account;
 
         // auto-generated
         public Stim_Design_Matrix stim_design_matrix;

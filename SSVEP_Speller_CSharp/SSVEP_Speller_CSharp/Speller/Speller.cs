@@ -44,20 +44,25 @@ namespace SSVEP_Speller_CSharp.Speller
         {
 
             // draw speller stimuli
-            //foreach (Rectangle rect in stimDesign.stim.rect)
-            //{
-            //    spritebatch.Draw(pixel, rect, Color.White);
-            //}
-
-            for (int i = 0; i < stimDesign.parms.num_targets; i++)
+            if (parms.debug)
             {
-                spritebatch.Draw(pixel, stimDesign.stim.rect[i],
-                    stimDesign.stim.color[i, cnt]);
+                foreach (Rectangle rect in stimDesign.stim.rect)
+                {
+                    spritebatch.Draw(pixel, rect, Color.White);
+                }
             }
+            else
+            {
+                for (int i = 0; i < stimDesign.parms.num_targets; i++)
+                {
+                    spritebatch.Draw(pixel, stimDesign.stim.rect[i],
+                        stimDesign.stim.color[i, cnt]);
+                }
 
-            cnt++;
-            if (cnt == parms.code_length)
-                cnt = 0;
+                cnt++;
+                if (cnt == parms.code_length)
+                    cnt = 0;
+            }
 
             base.Draw(gameTime);
         }
