@@ -14,7 +14,7 @@ namespace SSVEP_Speller_CSharp
         Speller_Parms parms;
         //Game
         GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        SpriteBatch spritebatch;
 
         //Windows Forms
         System.Windows.Forms.Form form;
@@ -38,8 +38,9 @@ namespace SSVEP_Speller_CSharp
             IsFixedTimeStep = true;
             TargetElapsedTime = new TimeSpan(10000000L / 60L); //frame rate (30 or 60 Hz only)
             InactiveSleepTime = TimeSpan.Zero;
+
             //automatically size the window based on screen dimensions
-            User32.SetWindowPos((uint)this.Window.Handle, 1, 1366, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight, 0);
+            User32.SetWindowPos((uint)this.Window.Handle, 1, 0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight, 0);
         }
 
         //Initialize
@@ -84,8 +85,10 @@ namespace SSVEP_Speller_CSharp
             form.DesktopLocation = new System.Drawing.Point(0, 0);
             form.ClientSize = new System.Drawing.Size(GraphicsDevice.DisplayMode.Width, GraphicsDevice.DisplayMode.Height);
 
-            //Create a new directX spritebatch
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+            spritebatch = new SpriteBatch(GraphicsDevice);
+
+            Speller.Speller speller = new Speller.Speller(this,parms, spritebatch);
+            Components.Add(speller);
 
             base.Initialize();
         }
@@ -100,8 +103,11 @@ namespace SSVEP_Speller_CSharp
         // Screen Rendering Logic
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Transparent);
+            GraphicsDevice.Clear(Color.Black);
+            spritebatch.Begin();
+            
             base.Draw(gameTime);
+            spritebatch.End();
         }
 
         //Memory CleanUp

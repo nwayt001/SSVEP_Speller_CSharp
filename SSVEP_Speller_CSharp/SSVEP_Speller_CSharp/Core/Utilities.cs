@@ -3,13 +3,37 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Diagnostics;
 
+
 namespace SSVEP_Speller_CSharp
 {
     // Custom Struct to hold the Speller configurations
     public struct Speller_Parms
     {
+        // user defined
         public int num_targets;
         public int stimulus_duration;
+        public float DEFAULT_PHASE;
+        public int SCREEN_WIDTH, SCREEN_HEIGHT;
+        public int refresh_rate, code_length;
+        public double min_freq, freq_resol, min_phase, phase_resol;
+        public string waveform, stim_shape;
+        public int num_column, num_row;
+        public int left_right_margin, inter_stimulus_spacing;
+
+        // auto-generated
+        public Stim_Design_Matrix stim_design_matrix;
+    }
+
+    public struct Stim_Design_Matrix
+    {
+        // stimulus matrix parms
+        public int vBlocksize, hBlocksize, blocksize;
+        public float dist2targ, lenside;
+        public float wTxtFld, hTxtFld, locTxtFld;
+        public double[] freq, phase, center_loc;
+        public int[,] flicker_code;
+        public Microsoft.Xna.Framework.Rectangle[] rect;
+        public Microsoft.Xna.Framework.Color[,] color;
     }
 
     // Custom Struct to hold mouse pointer xy coordinates
