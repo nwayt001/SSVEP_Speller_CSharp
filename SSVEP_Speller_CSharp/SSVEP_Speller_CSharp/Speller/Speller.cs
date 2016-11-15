@@ -14,6 +14,7 @@ namespace SSVEP_Speller_CSharp.Speller
         SpriteBatch spritebatch;
         Texture2D pixel;
         StimulusDesign stimDesign;
+        SpriteFont font;
         #endregion Fields
 
         //Constructor
@@ -24,7 +25,11 @@ namespace SSVEP_Speller_CSharp.Speller
             this.spritebatch = spritebatch;
             this.parms = parms;
 
-            stimDesign = new StimulusDesign(parms);
+            // load spritefont from content pipeline
+            font = game.Content.Load<SpriteFont>("TextFont");
+
+            // generate stimulus design object
+            stimDesign = new StimulusDesign(parms, font);
 
             // create a single pixel texture (for rendering stimuli)
             pixel = new Texture2D(game.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
@@ -44,19 +49,23 @@ namespace SSVEP_Speller_CSharp.Speller
         {
 
             // draw speller stimuli
-            if (parms.debug)
+            if (parms.debug) // for debuggin only
             {
-                foreach (Rectangle rect in stimDesign.stim.rect)
+                for (int i = 0; i < parms.num_targets; i++)
                 {
-                    spritebatch.Draw(pixel, rect, Color.White);
+                    spritebatch.Draw(pixel, stimDesign.stim.rect[i], Color.Black);
+                    spritebatch.DrawString(font, stimDesign.stim.text[i], stimDesign.stim.text_loc[i],
+                        Color.White, 0, Vector2.Zero, 1.0f, SpriteEffects.None, 1.0f);
                 }
             }
             else
             {
-                for (int i = 0; i < stimDesign.parms.num_targets; i++)
+                for (int i = 0; i < parms.num_targets; i++)
                 {
                     spritebatch.Draw(pixel, stimDesign.stim.rect[i],
                         stimDesign.stim.color[i, cnt]);
+                    spritebatch.DrawString(font, stimDesign.stim.text[i], stimDesign.stim.text_loc[i],
+                        Color.Black);
                 }
 
                 cnt++;

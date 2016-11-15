@@ -35,7 +35,12 @@ namespace SSVEP_Speller_CSharp.Forms
             parms.num_row = (int) (parms.num_targets / parms.num_column);
             parms.left_right_margin = 10;
             parms.inter_stimulus_spacing = 20;
-            parms.debug = true;
+            parms.debug = false;
+            parms.alphanumeric = new string[] {
+            "1","2","3","4","5","6","7","8","9","0",
+            "Q","W","E","R","T","Y","U","I","O","P",
+            "A","S","D","F","G","H","J","M","K","L","_",
+            "Z","X","C","V","B","N","M",",",".","<"};
 
             InitializeComponent();
         }

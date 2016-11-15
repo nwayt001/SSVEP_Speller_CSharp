@@ -103,7 +103,7 @@ namespace SSVEP_Speller_CSharp
         // Screen Rendering Logic
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Black);
+            GraphicsDevice.Clear(Color.Gray);
             spritebatch.Begin();
             
             base.Draw(gameTime);

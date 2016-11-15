@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 
 namespace SSVEP_Speller_CSharp.Speller
@@ -12,14 +14,15 @@ namespace SSVEP_Speller_CSharp.Speller
         #region Fields
         public Speller_Parms parms;
         public Stim_Design_Matrix stim = new Stim_Design_Matrix();
+        public SpriteFont font;
         #endregion Fields
         
         
         // Constructor
-        public StimulusDesign(Speller_Parms parms)
+        public StimulusDesign(Speller_Parms parms, SpriteFont font)
         {
             this.parms = parms;
-
+            this.font = font;
             // Generate stimulus design based on specified speller parms
             GenStimulusDesign();
         }
@@ -47,7 +50,7 @@ namespace SSVEP_Speller_CSharp.Speller
             
             // generate flicker codes
             stim.flicker_code = new int[parms.num_targets, parms.code_length];
-            stim.color = new Microsoft.Xna.Framework.Color[parms.num_targets, parms.code_length];
+            stim.color = new Color[parms.num_targets, parms.code_length];
             double tmp;
             for (int c = 0; c < parms.num_targets; c++)
             {
@@ -57,25 +60,25 @@ namespace SSVEP_Speller_CSharp.Speller
                     if (tmp >= 0.0)
                     {
                         stim.flicker_code[c, i] = 1;
-                        stim.color[c, i] = Microsoft.Xna.Framework.Color.White;
+                        stim.color[c, i] = Color.White;
                     }
                     else
                     {
                         stim.flicker_code[c, i] = 0;
-                        stim.color[c, i] = Microsoft.Xna.Framework.Color.Black;
+                        stim.color[c, i] = Color.Black;
                     }
                 }
             }
 
             // generate stimuli locations
-            stim.rect = new Microsoft.Xna.Framework.Rectangle[parms.num_targets];
+            stim.rect = new Rectangle[parms.num_targets];
             if (parms.num_column % 2 == 0)
             {
                 for (int row = 0; row < parms.num_row; row++)
                 {
                     for (int col = 0; col < parms.num_column; col++)
                     {
-                        stim.rect[parms.num_column * row + col] = new Microsoft.Xna.Framework.Rectangle
+                        stim.rect[parms.num_column * row + col] = new Rectangle
                             (stim.hBlocksize*col+parms.left_right_margin, stim.vBlocksize*row + stim.vBlocksize+80,
                             stim.hBlocksize-parms.inter_stimulus_spacing, stim.vBlocksize-parms.inter_stimulus_spacing);
                     }
@@ -83,6 +86,18 @@ namespace SSVEP_Speller_CSharp.Speller
             }
 
 
+            // Define stimulus text properties (based on number of targets)
+            stim.text = new string[parms.num_targets];
+            stim.text_offset = new Vector2[parms.num_targets];
+            stim.text_loc = new Vector2[parms.num_targets];
+            for (int i = 0; i < parms.num_targets; i++)
+            {
+                stim.text[i] = parms.alphanumeric[i];
+                stim.text_offset[i] = font.MeasureString(stim.text[i]);
+                stim.text_loc[i].X = stim.rect[i].Center.X - (stim.text_offset[i].X / 2.0f);
+                stim.text_loc[i].Y = stim.rect[i].Center.Y - (stim.text_offset[i].Y / 2.0f);
+            }
+            
             // add in the stimulus design matrix
             parms.stim_design_matrix = stim;
         }
