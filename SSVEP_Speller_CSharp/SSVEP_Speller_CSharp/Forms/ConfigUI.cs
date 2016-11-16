@@ -18,7 +18,7 @@ namespace SSVEP_Speller_CSharp.Forms
         {
 
             // Initialize speller parameters with default parms
-            parms.num_targets = 40;
+            parms.num_targets = 30;
             parms.stimulus_duration = 4;
             parms.DEFAULT_PHASE = 0;
             parms.SCREEN_WIDTH = 1920;
@@ -39,8 +39,12 @@ namespace SSVEP_Speller_CSharp.Forms
             parms.alphanumeric = new string[] {
             "1","2","3","4","5","6","7","8","9","0",
             "Q","W","E","R","T","Y","U","I","O","P",
-            "A","S","D","F","G","H","J","M","K","L","_",
-            "Z","X","C","V","B","N","M",",",".","<"};
+            "A","S","D","F","G","H","J","K","L","L","?",
+            "Z","X","C","V","B","N","M","!",".","<"};
+            parms.alphabet = new string[] {
+            "Q","W","E","R","T","Y","U","I","O","P",
+            "A","S","D","F","G","H","J","K","L","_",
+            "Z","X","C","V","B","N","M","!",".","<","!","_"};
 
             InitializeComponent();
         }

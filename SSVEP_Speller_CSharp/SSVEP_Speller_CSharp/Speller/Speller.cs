@@ -15,19 +15,21 @@ namespace SSVEP_Speller_CSharp.Speller
         Texture2D pixel;
         StimulusDesign stimDesign;
         SpriteFont font;
+        System.Windows.Forms.Form form;
         #endregion Fields
 
         //Constructor
-        public Speller(Game game, Speller_Parms parms, SpriteBatch spritebatch)
+        public Speller(Game game, Speller_Parms parms, SpriteBatch spritebatch, System.Windows.Forms.Form form)
             : base(game)
         {
             //Create a new directX spritebatch
             this.spritebatch = spritebatch;
             this.parms = parms;
+            this.form = form; 
 
             // load spritefont from content pipeline
             font = game.Content.Load<SpriteFont>("TextFont");
-
+            
             // generate stimulus design object
             stimDesign = new StimulusDesign(parms, font);
 

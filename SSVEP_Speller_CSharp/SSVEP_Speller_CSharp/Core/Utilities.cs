@@ -25,7 +25,7 @@ namespace SSVEP_Speller_CSharp
         public string group_num, session_num, run_num;
         public string speller_mode, target_text, feedback;
         public string classifier, twitter_account;
-        public string[] alphanumeric;
+        public string[] alphanumeric, alphabet;
 
         // auto-generated
         public Stim_Design_Matrix stim_design_matrix;
@@ -44,6 +44,9 @@ namespace SSVEP_Speller_CSharp
         public string[] text;
         public Microsoft.Xna.Framework.Vector2[] text_offset;
         public Microsoft.Xna.Framework.Vector2[] text_loc;
+
+        public Label TextToSpell, FeedBackText;
+        public Label SubjectIDLabel, TrialLabel, ConditionLabel;
     }
 
     // Custom Struct to hold mouse pointer xy coordinates

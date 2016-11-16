@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConfigUI));
             this.label1 = new System.Windows.Forms.Label();
             this.subject_id = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -198,7 +199,7 @@
             this.num_targets.Name = "num_targets";
             this.num_targets.Size = new System.Drawing.Size(253, 20);
             this.num_targets.TabIndex = 11;
-            this.num_targets.Text = "40";
+            this.num_targets.Text = "30";
             // 
             // label9
             // 
@@ -505,7 +506,8 @@
             this.Controls.Add(this.subject_id);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ConfigUI";
             this.Text = "SSVEP Speller - Parameter Configuration";
             this.Load += new System.EventHandler(this.ConfigUI_Load);

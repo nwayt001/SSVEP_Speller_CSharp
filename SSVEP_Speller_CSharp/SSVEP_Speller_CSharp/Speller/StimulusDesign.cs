@@ -25,6 +25,15 @@ namespace SSVEP_Speller_CSharp.Speller
             this.font = font;
             // Generate stimulus design based on specified speller parms
             GenStimulusDesign();
+
+            // Generate Feedback Text Window
+            GenTextFeedback();
+        }
+
+        // Generate Feedback text gui
+        protected void GenTextFeedback()
+        {
+
         }
 
         // Generate Stimulus Design
@@ -71,6 +80,7 @@ namespace SSVEP_Speller_CSharp.Speller
             }
 
             // generate stimuli locations
+            int cnt = 0;
             stim.rect = new Rectangle[parms.num_targets];
             if (parms.num_column % 2 == 0)
             {
@@ -79,12 +89,12 @@ namespace SSVEP_Speller_CSharp.Speller
                     for (int col = 0; col < parms.num_column; col++)
                     {
                         stim.rect[parms.num_column * row + col] = new Rectangle
-                            (stim.hBlocksize*col+parms.left_right_margin, stim.vBlocksize*row + stim.vBlocksize+80,
+                            (stim.hBlocksize*col+parms.left_right_margin, stim.vBlocksize*row + stim.vBlocksize+180,
                             stim.hBlocksize-parms.inter_stimulus_spacing, stim.vBlocksize-parms.inter_stimulus_spacing);
+                        cnt++;
                     }
                 }
             }
-
 
             // Define stimulus text properties (based on number of targets)
             stim.text = new string[parms.num_targets];
@@ -92,7 +102,7 @@ namespace SSVEP_Speller_CSharp.Speller
             stim.text_loc = new Vector2[parms.num_targets];
             for (int i = 0; i < parms.num_targets; i++)
             {
-                stim.text[i] = parms.alphanumeric[i];
+                stim.text[i] = parms.alphabet[i];
                 stim.text_offset[i] = font.MeasureString(stim.text[i]);
                 stim.text_loc[i].X = stim.rect[i].Center.X - (stim.text_offset[i].X / 2.0f);
                 stim.text_loc[i].Y = stim.rect[i].Center.Y - (stim.text_offset[i].Y / 2.0f);

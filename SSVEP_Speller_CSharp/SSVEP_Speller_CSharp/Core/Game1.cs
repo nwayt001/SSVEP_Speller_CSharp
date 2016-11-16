@@ -17,7 +17,7 @@ namespace SSVEP_Speller_CSharp
         SpriteBatch spritebatch;
 
         //Windows Forms
-        System.Windows.Forms.Form form;
+        public System.Windows.Forms.Form form;
 
         #endregion Fields
         //Constructor
@@ -77,17 +77,30 @@ namespace SSVEP_Speller_CSharp
             //xna game form
             form = System.Windows.Forms.Control.FromHandle(Window.Handle).FindForm();
             form.Visible = true;
-            form.AllowTransparency = true;
+            //form.AllowTransparency = true;
             //form.BackColor = System.Drawing.Color.Transparent;
             form.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             form.TransparencyKey = form.BackColor;
             form.TopMost = true;
             form.DesktopLocation = new System.Drawing.Point(0, 0);
             form.ClientSize = new System.Drawing.Size(GraphicsDevice.DisplayMode.Width, GraphicsDevice.DisplayMode.Height);
+            
+            // TEST DELETE THIS
+            System.Windows.Forms.Label label1 = new System.Windows.Forms.Label();
+            label1.AutoSize = true;
+            label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
+            label1.Location = new System.Drawing.Point(39, 44);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(73, 15);
+            label1.TabIndex = 0;
+            label1.Text = "Subject ID";
+            label1.BackColor = System.Drawing.Color.White;
+            this.form.Controls.Add(label1);
+
 
             spritebatch = new SpriteBatch(GraphicsDevice);
 
-            Speller.Speller speller = new Speller.Speller(this,parms, spritebatch);
+            Speller.Speller speller = new Speller.Speller(this,parms, spritebatch, form);
             Components.Add(speller);
 
             base.Initialize();
