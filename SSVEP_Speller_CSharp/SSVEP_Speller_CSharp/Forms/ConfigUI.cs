@@ -18,7 +18,14 @@ namespace SSVEP_Speller_CSharp.Forms
         {
 
             // Initialize speller parameters with default parms
-            parms.num_targets = 30;
+            parms.feedback = "Feedback (online)";
+            parms.classifier = "CCA";
+            parms.twitter_account = "Columbia";
+            parms.subject_id = "NRW";
+            parms.group_num = "1";
+            parms.run_num = "1";
+            parms.session_num = "1";
+            parms.num_targets = 40;
             parms.stimulus_duration = 4;
             parms.DEFAULT_PHASE = 0;
             parms.SCREEN_WIDTH = 1920;
@@ -46,7 +53,32 @@ namespace SSVEP_Speller_CSharp.Forms
             "A","S","D","F","G","H","J","K","L","_",
             "Z","X","C","V","B","N","M","!",".","<","!","_"};
 
+            // Initialize the gui components
             InitializeComponent();
+
+            // Initialize default configuration
+            InitializeDefaultConfig();
+
+        }
+
+        protected void InitializeDefaultConfig()
+        {
+            subject_id.Text = parms.subject_id;
+            group_num.Text = parms.group_num;
+            run_num.Text = parms.run_num;
+            session_num.Text = parms.session_num;
+            num_targets.Text = parms.num_targets.ToString();
+            speller_mode.SelectedText = parms.speller_mode;
+            target_text.Text = parms.target_text;
+            feedback.SelectedText = parms.feedback;
+            classifier.SelectedText = parms.classifier;
+            twitter_account.SelectedText = parms.twitter_account;
+            stimulus_duration.Text = parms.stimulus_duration.ToString();
+            min_freq.Text = parms.min_freq.ToString();
+            freq_resol.Text = parms.freq_resol.ToString();
+            refresh_rate.Text = parms.refresh_rate.ToString();
+            SCREEN_WIDTH.Text = parms.SCREEN_WIDTH.ToString();
+            SCREEN_HEIGHT.Text = parms.SCREEN_HEIGHT.ToString();   
         }
 
         

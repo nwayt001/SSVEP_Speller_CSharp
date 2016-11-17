@@ -39,6 +39,14 @@ namespace SSVEP_Speller_CSharp.Speller
         // Generate Stimulus Design
         protected void GenStimulusDesign()
         {
+            int offset = 80; // vertical offset from top of window
+            string[] stim_characters = parms.alphanumeric; //characters to be displayed on stimuli
+            if(parms.num_targets <=32)
+            {
+                offset = 180;
+                stim_characters = parms.alphabet;
+            }
+
             // Set stimulus frequency and phase locations in the stimulus grid
             stim.phase = new double[parms.num_targets];
             stim.freq = new double[parms.num_targets];
@@ -89,7 +97,7 @@ namespace SSVEP_Speller_CSharp.Speller
                     for (int col = 0; col < parms.num_column; col++)
                     {
                         stim.rect[parms.num_column * row + col] = new Rectangle
-                            (stim.hBlocksize*col+parms.left_right_margin, stim.vBlocksize*row + stim.vBlocksize+180,
+                            (stim.hBlocksize*col+parms.left_right_margin, stim.vBlocksize*row + stim.vBlocksize+offset,
                             stim.hBlocksize-parms.inter_stimulus_spacing, stim.vBlocksize-parms.inter_stimulus_spacing);
                         cnt++;
                     }
@@ -102,7 +110,7 @@ namespace SSVEP_Speller_CSharp.Speller
             stim.text_loc = new Vector2[parms.num_targets];
             for (int i = 0; i < parms.num_targets; i++)
             {
-                stim.text[i] = parms.alphabet[i];
+                stim.text[i] = stim_characters[i];
                 stim.text_offset[i] = font.MeasureString(stim.text[i]);
                 stim.text_loc[i].X = stim.rect[i].Center.X - (stim.text_offset[i].X / 2.0f);
                 stim.text_loc[i].Y = stim.rect[i].Center.Y - (stim.text_offset[i].Y / 2.0f);

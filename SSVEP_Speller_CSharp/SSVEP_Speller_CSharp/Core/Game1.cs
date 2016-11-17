@@ -94,9 +94,8 @@ namespace SSVEP_Speller_CSharp
             label1.Size = new System.Drawing.Size(73, 15);
             label1.TabIndex = 0;
             label1.Text = "Subject ID";
-            label1.BackColor = System.Drawing.Color.White;
+            label1.BackColor = System.Drawing.Color.LightGray;
             this.form.Controls.Add(label1);
-
 
             spritebatch = new SpriteBatch(GraphicsDevice);
 
@@ -116,7 +115,7 @@ namespace SSVEP_Speller_CSharp
         // Screen Rendering Logic
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Gray);
+            GraphicsDevice.Clear(Color.LightGray);
             spritebatch.Begin();
             
             base.Draw(gameTime);
