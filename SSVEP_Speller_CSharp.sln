@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSVEP_Speller_CSharp", "SSVEP_Speller_CSharp\SSVEP_Speller_CSharp\SSVEP_Speller_CSharp.csproj", "{9A12546A-0421-4CC4-8528-EC3BB1028B97}"
+EndProject
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "SSVEP_Speller_CSharpContent", "SSVEP_Speller_CSharp\SSVEP_Speller_CSharpContent\SSVEP_Speller_CSharpContent.contentproj", "{99A664DC-1AAB-49FB-AFB1-FD1FD4D39CAD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9A12546A-0421-4CC4-8528-EC3BB1028B97}.Debug|x86.ActiveCfg = Debug|x86
+		{9A12546A-0421-4CC4-8528-EC3BB1028B97}.Debug|x86.Build.0 = Debug|x86
+		{9A12546A-0421-4CC4-8528-EC3BB1028B97}.Release|x86.ActiveCfg = Release|x86
+		{9A12546A-0421-4CC4-8528-EC3BB1028B97}.Release|x86.Build.0 = Release|x86
+		{99A664DC-1AAB-49FB-AFB1-FD1FD4D39CAD}.Debug|x86.ActiveCfg = Debug|x86
+		{99A664DC-1AAB-49FB-AFB1-FD1FD4D39CAD}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
