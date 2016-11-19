@@ -1,6 +1,8 @@
 using System;
 using System.Windows.Forms;
 using SSVEP_Speller_CSharp.Forms;
+using LSLlib;
+using SSVEP_Speller_CSharp.LabStreamingLayer.Visualizer;
 
 namespace SSVEP_Speller_CSharp
 {
@@ -12,10 +14,16 @@ namespace SSVEP_Speller_CSharp
         /// </summary>
         static void Main(string[] args)
         {
-
-            // Start main application GUI
+            // LSL version
+            var version = liblsl.library_version();
+            Console.WriteLine(version.ToString());
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            // Visualize EEG signals
+            Application.Run(new LSL_Visualizer());
+
+            // Start configuration gui
             ConfigUI gui = new ConfigUI();
             Application.Run(gui);
 
