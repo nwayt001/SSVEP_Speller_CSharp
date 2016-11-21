@@ -40,7 +40,7 @@ namespace SSVEP_Speller_CSharp.LabStreamingLayer.Visualizer
 
             visMainPlot = new PlotView();
             visMainPlot.Location = new Point(0, 0);
-            visMainPlot.Name = "gtecMainPlot";
+            visMainPlot.Name = "gLSLMainPlot";
             visMainPlot.PanCursor = Cursors.Hand;
             visMainPlot.Size = new Size(900, 900);
             visMainPlot.TabIndex = 0;

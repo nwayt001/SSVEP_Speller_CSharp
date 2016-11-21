@@ -29,6 +29,7 @@ namespace SSVEP_Speller_CSharp.LabStreamingLayer.Visualizer
         private float[] sample;
 
         private int channelCount;
+        private int channelCount2;
 
         private Vis_Data visData;
 
@@ -46,6 +47,7 @@ namespace SSVEP_Speller_CSharp.LabStreamingLayer.Visualizer
             }
             this.inlet = new liblsl.StreamInlet(this.results[0]);
             this.channelCount = this.results[0].channel_count();
+            //channelCount = 24;
             this.sample = new float[this.channelCount];
             this.chunk = new float[250, this.channelCount];
             this.visData = new Vis_Data();
@@ -84,7 +86,7 @@ namespace SSVEP_Speller_CSharp.LabStreamingLayer.Visualizer
                     double arg_28_0 = this.timestamps[i];
                     for (int j = 0; j < this.channelCount; j++)
                     {
-                        this.sample[j] = this.chunk[i, j]+(i*10);
+                        this.sample[j] = this.chunk[i, j]+(j*100.0f);
                     }
                     if (this.sample[0] != 0f)
                     {
@@ -119,13 +121,12 @@ namespace SSVEP_Speller_CSharp.LabStreamingLayer.Visualizer
                 IsZoomEnabled = false
             });
             var tmp = new LinearAxis();
-            tmp.AbsoluteMaximum = 1000;
             plotModel.Axes.Add(new LinearAxis
             {
                 Key = "Y Axis",
-                Position = AxisPosition.Left,
-                AbsoluteMaximum = 1000,
-                AbsoluteMinimum = -1000
+                Position = AxisPosition.Left
+                //AbsoluteMaximum = 1000,
+                //AbsoluteMinimum = -1000
             });
             this.visData.visMainSeries = new LineSeries[this.channelCount];
             for (int i = 0; i < this.channelCount; i++)

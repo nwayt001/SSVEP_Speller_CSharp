@@ -35,13 +35,14 @@ namespace SSVEP_Speller_CSharp.LabStreamingLayer.Visualizer
                     }
                     this.counter++;
                     float[] array = (float[])this.queue.Dequeue();
-                    for (int i = 1; i < 31; i++)
+                    for (int i = 0; i < channelCount; i++)
                     {
-                        this.sharedData.visMainSeries[i].Points[this.counter] = new DataPoint((double)this.counter, (double)array[i + 1]);
+                        this.sharedData.visMainSeries[i].Points[this.counter] = new DataPoint((double)this.counter, (double)array[i]);
                     }
                     this.sharedData.GtecMainPlot.InvalidatePlot(true);
-                    Thread.Sleep(100);
+                    Thread.Sleep(50);
                 }
+                
             }
         }
     }
