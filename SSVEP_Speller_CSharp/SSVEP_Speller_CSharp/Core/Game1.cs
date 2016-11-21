@@ -24,7 +24,6 @@ namespace SSVEP_Speller_CSharp
         public Game1(Speller_Parms parms)
         {
             this.parms = parms;   //reference to speller parms
-
             //directX graphics 
             graphics = new GraphicsDeviceManager(this)
             {
