@@ -34,24 +34,32 @@ namespace SSVEP_Speller_CSharp.LabStreamingLayer.Visualizer
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            AutoScaleMode = AutoScaleMode.Font;
-            Text = "LSL_Visualizer";
+            this.visMainPlot = new OxyPlot.WindowsForms.PlotView();
+            this.SuspendLayout();
+            // 
+            // visMainPlot
+            // 
+            this.visMainPlot.Location = new System.Drawing.Point(0, 0);
+            this.visMainPlot.Name = "visMainPlot";
+            this.visMainPlot.PanCursor = System.Windows.Forms.Cursors.Hand;
+            this.visMainPlot.Size = new System.Drawing.Size(900, 900);
+            this.visMainPlot.TabIndex = 0;
+            this.visMainPlot.Text = "mainPlotView";
+            this.visMainPlot.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
+            this.visMainPlot.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
+            this.visMainPlot.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
+            // 
+            // LSL_Visualizer
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(900, 900);
+            this.Controls.Add(this.visMainPlot);
+            this.Name = "LSL_Visualizer";
+            this.Text = "LSL_Visualizer";
+            this.Load += new System.EventHandler(this.LSL_Visualizer_Load);
+            this.ResumeLayout(false);
 
-            visMainPlot = new PlotView();
-            visMainPlot.Location = new Point(0, 0);
-            visMainPlot.Name = "gLSLMainPlot";
-            visMainPlot.PanCursor = Cursors.Hand;
-            visMainPlot.Size = new Size(900, 900);
-            visMainPlot.TabIndex = 0;
-            visMainPlot.Text = "mainPlotView";
-            visMainPlot.ZoomHorizontalCursor = Cursors.SizeWE;
-            visMainPlot.ZoomRectangleCursor = Cursors.SizeNWSE;
-            visMainPlot.ZoomVerticalCursor = Cursors.SizeNS;
-            AutoScaleDimensions = new SizeF(6f, 13f);
-            ClientSize = new Size(900, 900);
-            Controls.Add(this.visMainPlot);
-            ResumeLayout(false);
         }
 
         #endregion

@@ -29,7 +29,6 @@ namespace SSVEP_Speller_CSharp.LabStreamingLayer.Visualizer
         private float[] sample;
 
         private int channelCount;
-        private int channelCount2;
 
         private Vis_Data visData;
 
@@ -37,8 +36,11 @@ namespace SSVEP_Speller_CSharp.LabStreamingLayer.Visualizer
 
         private PlotView visMainPlot;
 
+
         public LSL_Visualizer()
         {
+            this.FormClosing += visForm_FormClosing; 
+
             this.results = liblsl.resolve_stream("type", "EEG", 1, 5.0);
             if (this.results.Length < 1)
             {
@@ -47,7 +49,6 @@ namespace SSVEP_Speller_CSharp.LabStreamingLayer.Visualizer
             }
             this.inlet = new liblsl.StreamInlet(this.results[0]);
             this.channelCount = this.results[0].channel_count();
-            //channelCount = 24;
             this.sample = new float[this.channelCount];
             this.chunk = new float[250, this.channelCount];
             this.visData = new Vis_Data();
@@ -141,32 +142,15 @@ namespace SSVEP_Speller_CSharp.LabStreamingLayer.Visualizer
             this.visMainPlot.Model = plotModel;
         }
 
-        //protected override void Dispose(bool disposing)
-        //{
-        //    if (disposing && this.components != null)
-        //    {
-        //        this.components.Dispose();
-        //    }
-        //    base.Dispose(disposing);
-        //}
+        // callback to close out the worker thread
+        private void visForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            visWorkerThread.RequestStop();
+        }
 
-        //private void InitializeComponent()
-        //{
-        //    this.visMainPlot = new PlotView();
-        //    this.visMainPlot.Location = new Point(0, 0);
-        //    this.visMainPlot.Name = "gtecMainPlot";
-        //    this.visMainPlot.PanCursor = Cursors.Hand;
-        //    this.visMainPlot.Size = new Size(900, 900);
-        //    this.visMainPlot.TabIndex = 0;
-        //    this.visMainPlot.Text = "mainPlotView";
-        //    this.visMainPlot.ZoomHorizontalCursor = Cursors.SizeWE;
-        //    this.visMainPlot.ZoomRectangleCursor = Cursors.SizeNWSE;
-        //    this.visMainPlot.ZoomVerticalCursor = Cursors.SizeNS;
-        //    base.AutoScaleDimensions = new SizeF(6f, 13f);
-        //    base.AutoScaleMode = AutoScaleMode.Font;
-        //    base.ClientSize = new Size(900, 900);
-        //    base.Controls.Add(this.visMainPlot);
-        //    base.ResumeLayout(false);
-        //}
+        private void LSL_Visualizer_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

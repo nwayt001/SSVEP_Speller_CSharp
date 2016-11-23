@@ -7,6 +7,8 @@ namespace SSVEP_Speller_CSharp.LabStreamingLayer.Visualizer
 {
     class Vis_WorkerThread
     {
+        private volatile bool _running = true;
+
         public Vis_Data sharedData;
 
         public Queue queue;
@@ -15,6 +17,7 @@ namespace SSVEP_Speller_CSharp.LabStreamingLayer.Visualizer
 
         private int channelCount;
 
+        // constructor
         public Vis_WorkerThread(Vis_Data sharedData, int channelCount)
         {
             this.sharedData = sharedData;
@@ -23,9 +26,10 @@ namespace SSVEP_Speller_CSharp.LabStreamingLayer.Visualizer
             this.queue = Queue.Synchronized(new Queue());
         }
 
+        // main runnable
         public void Run()
         {
-            while (true)
+            while (_running)
             {
                 if (this.queue.Count > 0)
                 {
@@ -44,6 +48,12 @@ namespace SSVEP_Speller_CSharp.LabStreamingLayer.Visualizer
                 }
                 
             }
+        }
+
+        // method to properly close out thread
+        public void RequestStop()
+        {
+            _running = false;
         }
     }
 }
