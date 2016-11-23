@@ -14,26 +14,21 @@ namespace SSVEP_Speller_CSharp
         /// </summary>
         static void Main(string[] args)
         {
-            // LSL version
-            var version = liblsl.library_version();
-            Console.WriteLine(version.ToString());
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            // Visualize EEG signals
-            Application.Run(new LSL_Visualizer());
-
-            // Start configuration gui
-            ConfigUI gui = new ConfigUI();
+            // Run Main Form
+            MainForm gui = new MainForm();
             Application.Run(gui);
 
             // Start XNA
-            using (Game1 game = new Game1(gui.parms))
+            using (Game1 game = new Game1(gui.config.parms))
             {
                 InterceptKeys.Hook();
                 game.Run();
                 InterceptKeys.Unhook();
             }
+            
         }
     }
 #endif

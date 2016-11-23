@@ -41,7 +41,7 @@ namespace SSVEP_Speller_CSharp.Speller
         // Update Logic 
         public override void Update(GameTime gameTime)
         {
-
+            // put paradigm here?
             base.Update(gameTime);
         }
 

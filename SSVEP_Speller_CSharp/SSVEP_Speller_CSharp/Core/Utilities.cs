@@ -25,7 +25,7 @@ namespace SSVEP_Speller_CSharp
         public string group_num, session_num, run_num;
         public string speller_mode, target_text, feedback;
         public string classifier, twitter_account;
-        public string[] alphanumeric, alphabet;
+        public string[] alphanumeric, alphabet, alphabet2;
 
         // auto-generated
         public Stim_Design_Matrix stim_design_matrix;

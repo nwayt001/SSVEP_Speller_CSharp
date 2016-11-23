@@ -16,7 +16,6 @@ namespace SSVEP_Speller_CSharp.Forms
 
         public ConfigUI()
         {
-
             // Initialize speller parameters with default parms
             parms.feedback = "Feedback (online)";
             parms.classifier = "CCA";
@@ -39,20 +38,25 @@ namespace SSVEP_Speller_CSharp.Forms
             parms.waveform = "square";
             parms.stim_shape = "rect";
             parms.num_column = Math.Min(parms.num_targets, 10);
-            parms.num_row = (int) (parms.num_targets / parms.num_column);
+            parms.num_row = (int)(parms.num_targets / parms.num_column);
             parms.left_right_margin = 10;
             parms.inter_stimulus_spacing = 20;
             parms.debug = false;
             parms.alphanumeric = new string[] {
             "1","2","3","4","5","6","7","8","9","0",
             "Q","W","E","R","T","Y","U","I","O","P",
-            "A","S","D","F","G","H","J","K","L","L","?",
+            "A","S","D","F","G","H","J","K","L","?",
             "Z","X","C","V","B","N","M","!",".","<"};
+            parms.alphabet2 = new string[] {
+            "Q","W","E","R","T","Y","U","I","O","P",
+            "A","S","D","F","G","H","J","K","L","?",
+            "Z","X","C","V","B","N","M","!",".","'",
+            "1","2","3","@","#","_","&",",","0","<"};
             parms.alphabet = new string[] {
             "Q","W","E","R","T","Y","U","I","O","P",
             "A","S","D","F","G","H","J","K","L","_",
             "Z","X","C","V","B","N","M","!",".","<","!","_"};
-
+             
             // Initialize the gui components
             InitializeComponent();
 
@@ -117,6 +121,7 @@ namespace SSVEP_Speller_CSharp.Forms
 
             // parms are saved, close window to start speller
             this.Close();
+
         }
 
         private void ConfigUI_Load(object sender, EventArgs e)

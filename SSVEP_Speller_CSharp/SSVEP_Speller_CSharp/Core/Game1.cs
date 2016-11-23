@@ -100,7 +100,6 @@ namespace SSVEP_Speller_CSharp
 
             Speller.Speller speller = new Speller.Speller(this,parms, spritebatch, form);
             Components.Add(speller);
-
             base.Initialize();
         }
 
