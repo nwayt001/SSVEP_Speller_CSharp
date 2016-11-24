@@ -16,6 +16,7 @@ namespace SSVEP_Speller_CSharp.Forms
         // ui forms
         public ConfigUI config;
         public LSL_Visualizer visualizer;
+        bool config_initialized = false;
         #endregion Fields
 
 
@@ -34,6 +35,7 @@ namespace SSVEP_Speller_CSharp.Forms
         //Callback for configuration button
         private void configBtn_Click(object sender, EventArgs e)
         {
+            config_initialized = true;
             config = new ConfigUI();
             config.Show();
             
@@ -49,7 +51,12 @@ namespace SSVEP_Speller_CSharp.Forms
         //Callback for the start button
         private void startBtn_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if(config_initialized)
+                this.Close();
+            else
+            {
+                MessageBox.Show("Configuration not set! Please press 'Config' Button.");
+            }
         }
     }
 }
