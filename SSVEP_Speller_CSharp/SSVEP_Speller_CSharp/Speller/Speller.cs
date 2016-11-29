@@ -36,6 +36,23 @@ namespace SSVEP_Speller_CSharp.Speller
             // create a single pixel texture (for rendering stimuli)
             pixel = new Texture2D(game.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
             pixel.SetData(new[] { Color.White });
+
+            // Add UI elements to speller
+            addUIelements();
+            
+        }
+
+        // Add windows forms UI elements to the speller screen
+        protected void addUIelements()
+        {
+            // add exit button
+            form.Controls.Add(stimDesign.Exit_btn);
+
+            // add subject info
+            form.Controls.Add(stimDesign.SubID_text);
+            form.Controls.Add(stimDesign.SessionID_text);
+            form.Controls.Add(stimDesign.Instruction_text);
+            form.Controls.Add(stimDesign.Feedback_text);
         }
 
         // Update Logic 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Windows.Forms;
 
 
 namespace SSVEP_Speller_CSharp.Speller
@@ -15,6 +16,12 @@ namespace SSVEP_Speller_CSharp.Speller
         public Speller_Parms parms;
         public Stim_Design_Matrix stim = new Stim_Design_Matrix();
         public SpriteFont font;
+        public Button Exit_btn;
+        public Button Done_btn;
+        public Label SubID_text;
+        public Label SessionID_text;
+        public Label Instruction_text;
+        public Label Feedback_text;
         #endregion Fields
         
         
@@ -27,15 +34,64 @@ namespace SSVEP_Speller_CSharp.Speller
             GenStimulusDesign();
 
             // Generate Feedback Text Window
-            GenTextFeedback();
+            GenWinFormsElements();
         }
 
+        #region WinFormsFunctions
         // Generate Feedback text gui
-        protected void GenTextFeedback()
+        protected void GenWinFormsElements()
         {
+            // Close btn
+            Exit_btn = new Button();
+            Exit_btn.AutoSize = true;
+            Exit_btn.Height = 10; // small size ensures the minimum size button for btn text
+            Exit_btn.Width = 10;
+            Exit_btn.Text = "X";
+            Exit_btn.Location = new System.Drawing.Point(parms.SCREEN_WIDTH-Exit_btn.Size.Width*2,0);
+            Exit_btn.Click += Exit_btn_Click;
 
+            //Subject info
+            SubID_text = new Label();
+            SubID_text.AutoSize = true;
+            SubID_text.Text = "Subject: " + parms.subject_id;
+            SubID_text.Location = new System.Drawing.Point(0,0);
+            SubID_text.BackColor = System.Drawing.Color.LightGray;
+            SubID_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
+
+            //Session info
+            SessionID_text = new Label();
+            SessionID_text.AutoSize = true;
+            SessionID_text.Text = "Session: " + parms.session_num;
+            SessionID_text.Location = new System.Drawing.Point(0, SubID_text.Size.Height);
+            SessionID_text.BackColor = System.Drawing.Color.LightGray;
+            SessionID_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
+
+            Instruction_text = new Label();
+            Instruction_text.AutoSize = true;
+            Instruction_text.Text = "Instruction ->  Please Spell: 'BRAIN' ";
+            Instruction_text.Location = new System.Drawing.Point((int)((float)parms.SCREEN_WIDTH/3.0f), 
+                stim.hBlocksize/4);
+            Instruction_text.BackColor = System.Drawing.Color.LightGray;
+            Instruction_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold);
+
+            Feedback_text = new Label();
+            Feedback_text.AutoSize = true;
+            Feedback_text.Text = "Feedback  ->  _ _ _ _ _";
+            Feedback_text.Location = new System.Drawing.Point((int)((float)parms.SCREEN_WIDTH / 3.0f),
+                stim.hBlocksize / 4 + (Instruction_text.Size.Height*2));
+            Feedback_text.BackColor = System.Drawing.Color.LightGray;
+            Feedback_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold);
         }
 
+        //Callback for exit button
+        private void Exit_btn_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        #endregion WinFormsFunctions
+
+        #region StimDesignFunctions
         // Generate Stimulus Design
         protected void GenStimulusDesign()
         {
@@ -119,7 +175,7 @@ namespace SSVEP_Speller_CSharp.Speller
             // add in the stimulus design matrix
             parms.stim_design_matrix = stim;
         }
-
+        
         // wrap radians to 2*pi
         protected double wrapto2pi(double lambda)
         {
@@ -133,6 +189,6 @@ namespace SSVEP_Speller_CSharp.Speller
 
             return lambda;
         }
-
+        #endregion StimDesignFunctions
     }
 }
