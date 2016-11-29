@@ -22,13 +22,15 @@ namespace SSVEP_Speller_CSharp
             Application.Run(gui);
 
             // Start XNA
-            using (Game1 game = new Game1(gui.config.parms))
+            if (!gui.KillApplication)
             {
-                InterceptKeys.Hook();
-                game.Run();
-                InterceptKeys.Unhook();
+                using (Game1 game = new Game1(gui.config.parms))
+                {
+                    InterceptKeys.Hook();
+                    game.Run();
+                    InterceptKeys.Unhook();
+                }
             }
-            
         }
     }
 #endif

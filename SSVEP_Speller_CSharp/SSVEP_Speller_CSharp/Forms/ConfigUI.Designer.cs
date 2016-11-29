@@ -460,7 +460,7 @@
             this.StartBtn.Name = "StartBtn";
             this.StartBtn.Size = new System.Drawing.Size(99, 23);
             this.StartBtn.TabIndex = 28;
-            this.StartBtn.Text = "Start Speller";
+            this.StartBtn.Text = "Save Config";
             this.StartBtn.UseVisualStyleBackColor = true;
             this.StartBtn.Click += new System.EventHandler(this.StartBtn_Click);
             // 
@@ -470,7 +470,7 @@
             this.ExitBtn.Name = "ExitBtn";
             this.ExitBtn.Size = new System.Drawing.Size(99, 23);
             this.ExitBtn.TabIndex = 29;
-            this.ExitBtn.Text = "Exit";
+            this.ExitBtn.Text = "Quit";
             this.ExitBtn.UseVisualStyleBackColor = true;
             this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
             // 

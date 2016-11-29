@@ -17,6 +17,7 @@ namespace SSVEP_Speller_CSharp.Forms
         public ConfigUI config;
         public LSL_Visualizer visualizer;
         bool config_initialized = false;
+        public bool KillApplication = false;
         #endregion Fields
 
 
@@ -28,6 +29,7 @@ namespace SSVEP_Speller_CSharp.Forms
         //Callback for quit button
         private void quitBtn_Click(object sender, EventArgs e)
         {
+            KillApplication = true;
             Application.Exit(); // Close out application
             
         }

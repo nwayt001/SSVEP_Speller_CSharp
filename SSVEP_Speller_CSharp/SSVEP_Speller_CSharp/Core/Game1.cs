@@ -84,17 +84,17 @@ namespace SSVEP_Speller_CSharp
             form.DesktopLocation = new System.Drawing.Point(0, 0);
             form.ClientSize = new System.Drawing.Size(GraphicsDevice.DisplayMode.Width, GraphicsDevice.DisplayMode.Height);
             
-            // TEST DELETE THIS
-            System.Windows.Forms.Label label1 = new System.Windows.Forms.Label();
-            label1.AutoSize = true;
-            label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
-            label1.Location = new System.Drawing.Point(39, 44);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(73, 15);
-            label1.TabIndex = 0;
-            label1.Text = "Subject ID";
-            label1.BackColor = System.Drawing.Color.LightGray;
-            this.form.Controls.Add(label1);
+            //// TEST DELETE THIS
+            //System.Windows.Forms.Label label1 = new System.Windows.Forms.Label();
+            //label1.AutoSize = true;
+            //label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
+            //label1.Location = new System.Drawing.Point(39, 44);
+            //label1.Name = "label1";
+            //label1.Size = new System.Drawing.Size(73, 15);
+            //label1.TabIndex = 0;
+            //label1.Text = "Subject ID";
+            //label1.BackColor = System.Drawing.Color.LightGray;
+            //this.form.Controls.Add(label1);
 
             spritebatch = new SpriteBatch(GraphicsDevice);
 
